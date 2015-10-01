@@ -24,7 +24,7 @@
 
     <groupId>org.dspace</groupId>
     <artifactId>xoai</artifactId>
-    <version>4.1.1-SNAPSHOT</version>
+    <version>4.1.0-gbif-1-SNAPSHOT</version>
 
     <organization>
         <name>DuraSpace</name>
@@ -32,7 +32,7 @@
     </organization>
 
     <name>XOAI : OAI-PMH Java Toolkit</name>
-    <url>https://github.com/DSpace/xoai</url>
+    <url>https://github.com/gbif/xoai</url>
 
     <properties>
         <mockito.version>1.9.5</mockito.version>
@@ -60,9 +60,9 @@
 
 
     <scm>
-        <connection>scm:git:git@github.com:DSpace/xoai.git</connection>
-        <developerConnection>scm:git:git@github.com:DSpace/xoai.git</developerConnection>
-        <url>git@github.com:DSpace/xoai.git</url>
+        <connection>scm:git:git@github.com:gbif/xoai.git</connection>
+        <developerConnection>scm:git:git@github.com:gbif/xoai.git</developerConnection>
+        <url>https://github.com/gbif/xoai.git</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -73,7 +73,14 @@
         release manager.
     -->
     <distributionManagement>
-        <!-- further distribution management is found upstream in the sonatype parent -->
+        <repository>
+            <id>gbif-release</id>
+            <url>http://repository.gbif.org/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>gbif-snapshot</id>
+            <url>http://repository.gbif.org/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <repositories>
