@@ -27,9 +27,12 @@ import java.util.List;
 
 import static com.lyncode.xml.matchers.AttributeMatchers.attributeName;
 import static com.lyncode.xml.matchers.QNameMatchers.localPart;
-import static com.lyncode.xml.matchers.XmlEventMatchers.*;
+import static com.lyncode.xml.matchers.XmlEventMatchers.aStartElement;
+import static com.lyncode.xml.matchers.XmlEventMatchers.anEndElement;
+import static com.lyncode.xml.matchers.XmlEventMatchers.elementName;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.core.AnyOf.anyOf;
 
 public class Element implements XmlWritable {
     public static Element parse(XmlReader reader) throws XmlReaderException {
@@ -42,7 +45,7 @@ public class Element implements XmlWritable {
         Element element = new Element(reader.getAttributeValue(localPart(equalTo("name"))));
 
 
-        while (reader.next(anElement()).current(aStartElement())) {
+        while (reader.next(anyOf(aStartElement(), anEndElement())).current(aStartElement())) {
             if (reader.current(elementName(localPart(equalTo("element"))))) // Nested element
                 element.withElement(parse(reader));
             else if (reader.current(elementName(localPart(equalTo("field")))))

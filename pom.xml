@@ -41,6 +41,7 @@
         <log4j.version>1.2.14</log4j.version>
         <http-commons.version>4.2.1</http-commons.version>
         <woodstox.version>4.0.0</woodstox.version>
+        <hamcrest.version>2.1</hamcrest.version>
 
         <lyncode.builder-commons>1.0.2</lyncode.builder-commons>
         <lyncode.xml-io>1.0.3</lyncode.xml-io>
@@ -184,12 +185,24 @@
                 <groupId>com.lyncode</groupId>
                 <artifactId>xml-io</artifactId>
                 <version>${lyncode.xml-io}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hamcrest</groupId>
+                        <artifactId>hamcrest-all</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
                 <groupId>com.lyncode</groupId>
                 <artifactId>test-support</artifactId>
                 <version>${lyncode.test-support}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hamcrest</groupId>
+                        <artifactId>hamcrest-all</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
 
@@ -230,8 +243,8 @@
             </dependency>
             <dependency>
                 <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-all</artifactId>
-                <version>1.3</version>
+                <artifactId>hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
             </dependency>
             <dependency>
                 <groupId>xalan</groupId>
@@ -258,6 +271,12 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.11</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hamcrest</groupId>
+                        <artifactId>hamcrest-all</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>

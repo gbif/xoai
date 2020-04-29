@@ -31,9 +31,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.lyncode.xml.matchers.QNameMatchers.localPart;
-import static com.lyncode.xml.matchers.XmlEventMatchers.*;
+import static com.lyncode.xml.matchers.XmlEventMatchers.aStartElement;
+import static com.lyncode.xml.matchers.XmlEventMatchers.anEndElement;
+import static com.lyncode.xml.matchers.XmlEventMatchers.elementName;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.core.AnyOf.anyOf;
 
 public class XOAIMetadata implements XmlWritable {
 
@@ -45,7 +48,7 @@ public class XOAIMetadata implements XmlWritable {
         if (!reader.next(aStartElement()).current(allOf(aStartElement(), elementName(localPart(equalTo("metadata"))))))
             throw new XmlReaderException("Invalid XML. Expecting entity 'metadata'");
 
-        while (reader.next(anElement()).current(aStartElement())) {
+        while (reader.next(anyOf(aStartElement(), anEndElement())).current(aStartElement())) {
             if (reader.current(elementName(localPart(equalTo("element"))))) // Nested element
                 XOAIMetadata.withElement(Element.parse(reader));
             else throw new XmlReaderException("Unexpected element");

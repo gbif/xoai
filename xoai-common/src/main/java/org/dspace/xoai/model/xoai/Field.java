@@ -18,9 +18,13 @@ import javax.xml.stream.XMLStreamException;
 
 import static com.lyncode.xml.matchers.AttributeMatchers.attributeName;
 import static com.lyncode.xml.matchers.QNameMatchers.localPart;
-import static com.lyncode.xml.matchers.XmlEventMatchers.*;
+import static com.lyncode.xml.matchers.XmlEventMatchers.aStartElement;
+import static com.lyncode.xml.matchers.XmlEventMatchers.anEndElement;
+import static com.lyncode.xml.matchers.XmlEventMatchers.elementName;
+import static com.lyncode.xml.matchers.XmlEventMatchers.text;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.core.AnyOf.anyOf;
 
 public class Field implements XmlWritable {
     public static Field parse (XmlReader reader) throws XmlReaderException {
@@ -32,9 +36,9 @@ public class Field implements XmlWritable {
         if (reader.hasAttribute(attributeName(localPart(equalTo("name")))))
             field.withName(reader.getAttributeValue(localPart(equalTo("name"))));
 
-        if (reader.next(anElement(), text()).current(text())) {
+        if (reader.next(anyOf(aStartElement(), anEndElement()), text()).current(text())) {
             field.withValue(reader.getText());
-            reader.next(anElement());
+            reader.next(anyOf(aStartElement(), anEndElement()));
         }
 
         if (!reader.current(allOf(anEndElement(), elementName(localPart(equalTo("field"))))))
