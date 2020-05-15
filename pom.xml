@@ -75,8 +75,8 @@
     -->
     <distributionManagement>
         <repository>
-            <id>gbif-release</id>
-            <url>http://repository.gbif.org/content/repositories/releases</url>
+            <id>thirdparty</id>
+            <url>http://repository.gbif.org/content/repositories/thirdparty</url>
         </repository>
         <snapshotRepository>
             <id>gbif-snapshot</id>
