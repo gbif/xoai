@@ -24,7 +24,7 @@
 
     <groupId>org.dspace</groupId>
     <artifactId>xoai</artifactId>
-    <version>4.1.0-gbif-2-SNAPSHOT</version>
+    <version>4.1.0-gbif-3-SNAPSHOT</version>
 
     <organization>
         <name>DuraSpace</name>
@@ -104,7 +104,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.6</version>
+                    <version>1.5</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
