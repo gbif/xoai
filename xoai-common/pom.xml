@@ -11,7 +11,7 @@
     <parent>
         <artifactId>xoai</artifactId>
         <groupId>org.dspace</groupId>
-        <version>4.1.0-gbif-2</version>
+        <version>4.1.0-gbif-3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
